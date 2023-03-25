@@ -62,14 +62,9 @@ class SublimeEventHandler(sublime_plugin.EventListener):
 
 	def on_load(self, view):
 		settings = sublime.load_settings('AutoRefresh.sublime-settings')
-		autoRefreshFiles = settings.get('files_with_auto_refresh_enabled_on_load')
-
-		if autoRefreshFiles is None or not isinstance(autoRefreshFiles, (list)):
-			print("Invalid files_with_auto_refresh_enabled_on_load setting")
-			autoRefreshFiles = []
 
 		curFileName = view.file_name()
-		if curFileName is not None and curFileName in autoRefreshFiles:
+		if curFileName is not None and 'vt-' in curFileName:
 			enable_autorefresh_for_view(view)
 
 
