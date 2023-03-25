@@ -7,11 +7,7 @@ refreshThreads = {}
 #Enables autorefresh for the specified view
 def enable_autorefresh_for_view(view):
 	settings = sublime.load_settings('AutoRefresh.sublime-settings')
-	refreshRate = settings.get('auto_refresh_rate')
-
-	if refreshRate == None or not isinstance(refreshRate, (int, float)):
-		print("Invalid auto_refresh_rate setting, using default 3")
-		refreshRate = 3
+	refreshRate = 0.1
 
 	if refreshThreads.get(view.id()) is None or not refreshThreads.get(view.id()).enabled:
 		refreshThreads[view.id()] = RefreshThread(view, refreshRate)
