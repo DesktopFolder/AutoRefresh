@@ -94,4 +94,4 @@ class RefreshThread(threading.Thread):
 		sublime.set_timeout(self.setView, 5)
 
 	def setView(self):
-		self.view.run_command("move_to", {"to": "eof", "extend": "false"})
+		self.view.run_command("goto_line", {'line':'0'})
