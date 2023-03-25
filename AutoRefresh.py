@@ -94,7 +94,4 @@ class RefreshThread(threading.Thread):
 		sublime.set_timeout(self.setView, 5)
 
 	def setView(self):
-		if not self.view.is_loading():
-			self.view.run_command("move_to", {"to": "eof", "extend": "false"})
-		else:
-			sublime.set_timeout(self.setView, 5)
+		self.view.run_command("move_to", {"to": "eof", "extend": "false"})
